@@ -7,6 +7,12 @@ namespace Veeqtoh\ActiveEmail\Rules;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
+/**
+ * class NotBlacklistedEmail
+ * This library that validates an email.
+ *
+ * @package Veeqtoh\ActiveEmail\Rules
+ */
 class NotBlacklistedEmail implements ValidationRule
 {
     /**
@@ -28,7 +34,7 @@ class NotBlacklistedEmail implements ValidationRule
             $disposable = $this->getDomainName('.', $blacklistedDomainName, 0);
 
             if ($domainName === $disposable) {
-                $fail('Sorry, your :attribute provider is not supported. If you think this is in error, please email support.');
+                $fail('Sorry, your email provider is not supported. If you think this is in error, please email support.');
 
                 return;
             }
