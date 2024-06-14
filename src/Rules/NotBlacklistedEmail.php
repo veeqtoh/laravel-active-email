@@ -19,7 +19,7 @@ class NotBlacklistedEmail implements ValidationRule
     /**
      * Constructor to initialize the blacklisted domain names from the disposable class.
      */
-    public function __construct(protected DisposableEmail $disposableEmail)
+    public function __construct()
     {
         //
     }
@@ -31,13 +31,18 @@ class NotBlacklistedEmail implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail) : void
     {
+        $disposableEmail = new DisposableEmail();
+
         $domain     = $this->getDomainName('@', $value, 1);
         $domainName = $this->getDomainName('.', $domain, 0);
 
-        $mergedBlackLists       = array_merge(config('active-email.blacklist'), $this->disposableEmail->getBlacklist());
+        
+        $mergedBlackLists       = array_merge(config('active-email.blacklist'), $disposableEmail->getBlacklist());
         $blackListedDomainNames = array_unique($mergedBlackLists);
-
-        $mergedGreyLists       = array_merge(config('active-email.greylist'), $this->disposableEmail->getGreyList());
+        
+        dd($blackListedDomainNames);
+        
+        $mergedGreyLists       = array_merge(config('active-email.greylist'), $disposableEmail->getGreyList());
         $greyListedDomainNames = array_unique($mergedGreyLists);
 
         if (config('active-email.strict_mode')) {
