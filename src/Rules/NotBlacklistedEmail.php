@@ -6,6 +6,7 @@ namespace Veeqtoh\ActiveEmail\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Veeqtoh\ActiveEmail\DisposableEmail;
 
 /**
  * class NotBlacklistedEmail
@@ -16,6 +17,14 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class NotBlacklistedEmail implements ValidationRule
 {
     /**
+     * Constructor to initialize the blacklisted domain names from the disposable class.
+     */
+    public function __construct(protected DisposableEmail $disposableEmail)
+    {
+        //
+    }
+
+    /**
      * Run the validation rule.
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
@@ -25,9 +34,14 @@ class NotBlacklistedEmail implements ValidationRule
         $domain     = $this->getDomainName('@', $value, 1);
         $domainName = $this->getDomainName('.', $domain, 0);
 
-        $blackListedDomainNames = config('disposable.blacklist');
-        if (config('disposable.strict_mode')) {
-            $blackListedDomainNames = array_merge(config('disposable.blacklist'), config('disposable.greylist'));
+        $mergedBlackLists       = array_merge(config('active-email.blacklist'), $this->disposableEmail->getBlacklist());
+        $blackListedDomainNames = array_unique($mergedBlackLists);
+
+        $mergedGreyLists       = array_merge(config('active-email.greylist'), $this->disposableEmail->getGreyList());
+        $greyListedDomainNames = array_unique($mergedGreyLists);
+
+        if (config('active-email.strict_mode')) {
+            $blackListedDomainNames = array_merge($blackListedDomainNames, $greyListedDomainNames);
         }
 
         foreach ($blackListedDomainNames as $blacklistedDomainName) {
