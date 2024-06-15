@@ -26,8 +26,13 @@ class NotBlacklistedEmail implements ValidationRule
 
     /**
      * Run the validation rule.
-     *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     * 
+     * @param string $attribute The name of the attribute being validated.
+     * @param mixed  $value     The value of the attribute being validated.
+     * @param \Closure(mixed): \Illuminate\Translation\PotentiallyTranslatedString $fail 
+     *                          The callback that should be used to report validation failures.
+     * 
+     * @return void
      */
     public function validate(string $attribute, mixed $value, Closure $fail) : void
     {
