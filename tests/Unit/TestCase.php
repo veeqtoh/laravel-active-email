@@ -46,8 +46,8 @@ abstract class TestCase extends OrchestraTestCase
     protected function getEnvironmentSetUp($app)
     {
         // Set up any necessary configurations here
-        $app['config']->set('disposable.blacklist', ['mailinator.com', 'tempmail.com', 'example.ltd', 'example.co', 'example.com.nh', 'example.co.uk']);
-        $app['config']->set('disposable.greylist', []);
-        $app['config']->set('disposable.strict_mode', false);
+        $app['config']->set('active-email.blacklist', ['mailinator.com', 'tempmail.com', 'example.ltd', 'example.co', 'example.com.nh', 'example.co.uk']);
+        $app['config']->set('active-email.greylist', []);
+        $app['config']->set('active-email.strict_mode', false);
     }
 }
