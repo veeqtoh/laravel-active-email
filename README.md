@@ -1,10 +1,10 @@
 # laravel-active-email
 
 <p align="center">
-<a href="https://packagist.org/packages/veeqtoh/secure-code"><img src="https://img.shields.io/packagist/v/veeqtoh/laravel-active-email?style=flat-square" alt="Latest Version on Packagist"></a>
-<a href="https://packagist.org/packages/veeqtoh/secure-code"><img src="https://img.shields.io/packagist/dt/veeqtoh/laravel-active-email?style=flat-square" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/veeqtoh/secure-code"><img src="https://img.shields.io/packagist/php-v/veeqtoh/laravel-active-email?style=flat-square" alt="PHP from Packagist"></a>
-<a href="https://github.com/veeqtoh/secure-code/blob/master/LICENSE"><img src="https://img.shields.io/github/license/veeqtoh/laravel-active-email?style=flat-square" alt="GitHub license"></a>
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/v/veeqtoh/laravel-active-email?style=flat-square" alt="Latest Version on Packagist"></a>
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/dt/veeqtoh/laravel-active-email?style=flat-square" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/php-v/veeqtoh/laravel-active-email?style=flat-square" alt="PHP from Packagist"></a>
+<a href="https://github.com/veeqtoh/laravel-active-email/blob/master/LICENSE"><img src="https://img.shields.io/github/license/veeqtoh/laravel-active-email?style=flat-square" alt="GitHub license"></a>
 </p>
 
 ## Table of Contents
