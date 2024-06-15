@@ -36,12 +36,9 @@ class NotBlacklistedEmail implements ValidationRule
         $domain     = $this->getDomainName('@', $value, 1);
         $domainName = $this->getDomainName('.', $domain, 0);
 
-        
         $mergedBlackLists       = array_merge(config('active-email.blacklist'), $disposableEmail->getBlacklist());
         $blackListedDomainNames = array_unique($mergedBlackLists);
-        
-        dd($blackListedDomainNames);
-        
+
         $mergedGreyLists       = array_merge(config('active-email.greylist'), $disposableEmail->getGreyList());
         $greyListedDomainNames = array_unique($mergedGreyLists);
 
@@ -71,7 +68,7 @@ class NotBlacklistedEmail implements ValidationRule
      */
     protected function getDomainName(string $separator, string $input, int $position) : string
     {
-        return explode($separator, $input)[$position];
+        return explode($separator, strtolower($input))[$position];
     }
 
     /**
