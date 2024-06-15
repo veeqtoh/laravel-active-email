@@ -1,0 +1,69 @@
+{
+    "name": "veeqtoh/laravel-active-email",
+    "description": "A Laravel package providing validation rule against disposable email addresses.",
+    "type": "library",
+    "homepage": "https://github.com/veeqtoh/laravel-active-email",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Ukam",
+            "email": "victorjohnukam@gmail.com"
+        }
+    ],
+    "keywords": [
+        "veeqtoh",
+        "victor-ukam",
+        "disposable-email",
+        "disposable-emails",
+        "disposable-emails-domains",
+        "disposable-email-domains",
+        "validation",
+        "validation-rule",
+        "laravel-validation",
+        "active-email-address",
+        "laravel",
+        "laravel-package"
+    ],
+    "require": {
+        "php": "^8.1",
+        "nesbot/carbon": "^2.0|^3.0",
+        "illuminate/container": "^10.0|^11.0",
+        "illuminate/database": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "orchestra/testbench": "^8.0|^9.0",
+        "larastan/larastan": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Veeqtoh\\ActiveEmail\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Veeqtoh\\ActiveEmail\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Veeqtoh\\ActiveEmail\\Providers\\ActiveEmailProvider"
+            ],
+            "aliases": {
+                "ActiveEmail": "Veeqtoh\\ActiveEmail\\Facades\\ActiveEmail"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
