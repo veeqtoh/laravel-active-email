@@ -37,11 +37,10 @@ class ActiveEmailProvider extends ServiceProvider
             __DIR__ . '/../../config/active-email.php' => config_path('active-email.php'),
         ], 'config');
 
-        // Register the custom validation rule
+        // Register the custom validation rule.
         Validator::extend('notblacklisted', function ($attribute, $value, $parameters, $validator) {
             $rule = new NotBlacklistedEmail();
 
-            // Create a Closure for the fail method
             $fail = function($message) use ($attribute, $validator) {
                 $validator->errors()->add($attribute, $message);
             };

@@ -26,12 +26,12 @@ class NotBlacklistedEmail implements ValidationRule
 
     /**
      * Run the validation rule.
-     * 
+     *
      * @param string $attribute The name of the attribute being validated.
      * @param mixed  $value     The value of the attribute being validated.
-     * @param \Closure(mixed): \Illuminate\Translation\PotentiallyTranslatedString $fail 
+     * @param \Closure(mixed): \Illuminate\Translation\PotentiallyTranslatedString $fail
      *                          The callback that should be used to report validation failures.
-     * 
+     *
      * @return void
      */
     public function validate(string $attribute, mixed $value, Closure $fail) : void
@@ -41,11 +41,17 @@ class NotBlacklistedEmail implements ValidationRule
         $domain     = $this->getDomainName('@', $value, 1);
         $domainName = $this->getDomainName('.', $domain, 0);
 
-        $mergedBlackLists       = array_merge(config('active-email.blacklist'), $disposableEmail->getBlacklist());
-        $blackListedDomainNames = array_unique($mergedBlackLists);
+        $blackListedDomainNames = array_unique(array_merge(config('active-email.blacklist'), $disposableEmail->getBlacklist()));
+        $greyListedDomainNames  = array_unique(array_merge(config('active-email.greylist'), $disposableEmail->getGreyList()));
+        $whiteListedDomainNames = array_unique(config('active-email.whitelist'));
 
-        $mergedGreyLists       = array_merge(config('active-email.greylist'), $disposableEmail->getGreyList());
-        $greyListedDomainNames = array_unique($mergedGreyLists);
+        foreach ($whiteListedDomainNames as $whiteListedDomainName) {
+            $byePass = $this->getDomainName('.', $whiteListedDomainName, 0);
+
+            if ($domainName === $byePass) {
+                return;
+            }
+        }
 
         if (config('active-email.strict_mode')) {
             $blackListedDomainNames = array_merge($blackListedDomainNames, $greyListedDomainNames);

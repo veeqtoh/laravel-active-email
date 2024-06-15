@@ -12,8 +12,10 @@ namespace Veeqtoh\ActiveEmail;
  */
 class DisposableEmail
 {
-    /** 
+    /**
      * Retrieve a list of base domains without the TLDs that are blacklisted by default.
+     *
+     * @return array
      */
     public function getBlacklist() : array
     {

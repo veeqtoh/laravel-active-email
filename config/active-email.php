@@ -15,32 +15,46 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Blacklist
+    | Black List
     |--------------------------------------------------------------------------
     |
-    | This is a list of base domains without the TLD that are blacklisted by
-    | default. Add a domain to this list to blacklist it.
+    | This is a list of base domains with or without the TLD that are
+    | blacklisted by default. Add a domain to this list to blacklist it.
     |
     */
 
     'blacklist' => [
-        // 
+        //
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Greylist
+    | Grey List
     |--------------------------------------------------------------------------
     |
-    | This is a list of base domains without the TLD that aren't blacklisted by
-    | default except when in strict mode. Add a domain to this list to whitelist
-    | it when the feature is not set to strict mode. Ensure that the domain is not
-    | on the blacklist above.
+    | This is a list of base domains with or without the TLD that aren't
+    | blacklisted by default except when in strict mode. Add a domain to this
+    | list to whitelist it when the feature is not set to strict mode.
+    | Ensure that the domain is not on the blacklist above.
     |
     */
 
     'greylist' => [
-        // 
+        //
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | White List
+    |--------------------------------------------------------------------------
+    |
+    | This is a list of base domains with or without the TLD that are
+    | blacklisted by default but you want them to be bye passed.
+    |
+    */
+
+    'whitelist' => [
+        //
     ],
 
 ];
