@@ -1,6 +1,6 @@
 {
     "name": "veeqtoh/laravel-active-email",
-    "description": "A Laravel package to providing validation rule against disposable email addresses.",
+    "description": "A Laravel package providing validation rule against disposable email addresses.",
     "type": "library",
     "homepage": "https://github.com/veeqtoh/laravel-active-email",
     "license": "MIT",
