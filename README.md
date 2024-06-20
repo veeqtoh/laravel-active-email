@@ -158,4 +158,4 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ## Support Me
 
-If you've found this package useful, please consider sponsoring this project. It will encourage me to keep maintaining it.
+If you've found this package useful, please consider [sponsoring this project](https://github.com/sponsors/veeqtoh). It will encourage me to keep maintaining it.
