@@ -3466,7 +3466,6 @@ class DisposableEmail
             'xoxy',
             'xsmail',
             'xwaretech',
-            'yahoo',
             'yeah',
             'yepmail',
             'your-mail'
