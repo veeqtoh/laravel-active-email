@@ -1,5 +1,12 @@
 # laravel-active-email
 
+<p align="center">
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/v/veeqtoh/laravel-active-email?style=flat-square" alt="Latest Version on Packagist"></a>
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/dt/veeqtoh/laravel-active-email?style=flat-square" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/veeqtoh/laravel-active-email"><img src="https://img.shields.io/packagist/php-v/veeqtoh/laravel-active-email?style=flat-square" alt="PHP from Packagist"></a>
+<a href="https://github.com/veeqtoh/laravel-active-email/blob/master/LICENSE"><img src="https://img.shields.io/github/license/veeqtoh/laravel-active-email?style=flat-square" alt="GitHub license"></a>
+</p>
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -151,4 +158,4 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ## Support Me
 
-If you've found this package useful, please consider sponsoring this project. It will encourage me to keep maintaining it.
+If you've found this package useful, please consider [sponsoring this project](https://github.com/sponsors/veeqtoh). It will encourage me to keep maintaining it.
