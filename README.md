@@ -33,7 +33,7 @@
 
 ## Overview
 
-This package provides a library of disposable domains and adds a validator to Laravel apps to check that a given email address isn't coming from a disposable email service such as `Mailinator`, `Guerillamail`, `Fastmail` considering all their possible wildcards.
+This package provides a library of disposable domains and adds a validator to Laravel apps to check that a given email address isn't coming from a disposable email service such as `Mailinator`, `Guerillamail`, `Tempmail` considering all their possible wildcards.
 
 ### Key Features
 
