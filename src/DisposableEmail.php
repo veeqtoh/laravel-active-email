@@ -2196,7 +2196,6 @@ class DisposableEmail
             'ourklips',
             'ourpreviewdomain',
             'outlawspam',
-            'outlook',
             'outmail',
             'ovomail',
             'ovpn',
