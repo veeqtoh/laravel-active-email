@@ -57,4 +57,16 @@ return [
         //
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Validation Message
+    |--------------------------------------------------------------------------
+    |
+    | This is the message that is displayed when an email fails validation.
+    | Leave as is to use the package's default message.
+    |
+    */
+
+    'error_message' => '',
+
 ];

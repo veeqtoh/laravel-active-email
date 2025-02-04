@@ -23,6 +23,7 @@
         - [Black List](#black-list)
         - [Grey List](#grey-list)
         - [White List](#white-list)
+        - [Error Message](#error-message)
 - [Testing](#testing)
 - [To do](#to-do)
 - [Security](#security)
@@ -118,6 +119,10 @@ This is a list of base domains with or without the TLD that aren't blacklisted b
 #### White List
 
 This is a list of base domains with or without the TLD that are blacklisted by default but you want them to be bye passed.
+
+#### Error Message
+
+You may define your preferred error message or leave as is to use the package's.
 
 ## To Do
 
