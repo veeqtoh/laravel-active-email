@@ -61,7 +61,8 @@ class NotBlacklistedEmail implements ValidationRule
             $disposable = $this->getDomainName('.', $blacklistedDomainName, 0);
 
             if ($domainName === $disposable) {
-                $fail('Sorry, your email provider is not supported. If you think this is in error, please email support.');
+                $failMessage = config('active-email.error_message');
+                $fail($failMessage ? $failMessage : 'Sorry, your email provider is not supported. If you think this is an error, please contact us.');
 
                 return;
             }
