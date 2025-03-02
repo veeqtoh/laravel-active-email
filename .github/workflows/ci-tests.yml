@@ -1,48 +1,61 @@
-name: run-tests
+name: tests
 
 on:
+  push:
+    branches:
+      - master
+      - '*.x'
   pull_request:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  run-tests:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [8.1, 8.2, 8.3]
-        laravel: [10.*, 11.*]
-        include:
-          - laravel: 11.*
-            testbench: 9.*
-          - laravel: 10.*
-            testbench: 8.*
-        exclude:
-          - laravel: 11.*
-            php: 8.1
+  tests:
+    runs-on: ubuntu-22.04
 
-    name: PHP${{ matrix.php }} - Laravel ${{ matrix.laravel }}
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.1, 8.2, 8.3, 8.4]
+
+    name: PHP ${{ matrix.php }}
 
     steps:
-      - name: Update apt
-        run: sudo apt-get update --fix-missing
-
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, bcmath
+          ini-values: error_reporting=E_ALL
+          tools: composer:v2
           coverage: none
 
-      - name: Setup Problem Matches
+      - name: Install dependencies (Laravel 10)
         run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+          composer update --prefer-dist --no-interaction --no-progress --with="illuminate/contracts:^10"
+        if: matrix.php >= 8.1 && matrix.php < 8.4
 
-      - name: Install dependencies
+      - name: Execute tests (Laravel 10)
+        run: ./vendor/bin/pest --display-deprecations --fail-on-deprecation
+        if: matrix.php >= 8.1 && matrix.php < 8.4
+
+      - name: Install dependencies (Laravel 11)
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --prefer-dist --no-interaction --no-suggest
-      - name: Execute tests
-        run: vendor/bin/pest
+          composer update --prefer-dist --no-interaction --no-progress --with="illuminate/contracts:^11"
+        if: matrix.php >= 8.2 && matrix.php <= 8.4
+
+      - name: Execute tests (Laravel 11)
+        run: ./vendor/bin/pest --display-deprecations --fail-on-deprecation
+        if: matrix.php >= 8.2 && matrix.php <= 8.4
+
+      - name: Install dependencies (Laravel 12)
+        run: |
+          composer update --prefer-dist --no-interaction --no-progress --with="illuminate/contracts:^12"
+        if: matrix.php >= 8.2 && matrix.php <= 8.4
+
+      - name: Execute tests (Laravel 12)
+        run: ./vendor/bin/pest --display-deprecations --fail-on-deprecation
+        if: matrix.php >= 8.2 && matrix.php <= 8.4

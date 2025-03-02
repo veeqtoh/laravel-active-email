@@ -52,7 +52,7 @@ This package provides a library of disposable domains and adds a validator to La
 The package has been developed and tested to work with the following minimum requirements:
 
 - PHP 8.x
-- Laravel 10.x, 11.x
+- Laravel 10.x and above.
 
 ### Install the Package
 
